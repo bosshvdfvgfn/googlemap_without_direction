@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzxzefmV3z1PHKKEERXuZFOQlna3AJlQM&callback=initMap&libraries=&v=weekly"
+      async
+        ></script>
+        <style type="text/css">
+            #map {
+                height: 100%;
+                width: 100%;
+            } 
+        </style>
+
+        <script type="text/javascript">
+            x = navigator.geolocation;
+
+            x.getCurrentPosition(success, failure);
+
+            function success(position) {
+                var myLat = position.coords.latitude;
+                var myLong = position.coords.longitude;
+
+                var coords = new google.maps.LatLng(myLat, myLong);
+
+                var mapOptions = {
+                    zoom: 17,
+                    center: coords,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                
+                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+// ที่ดูใหม่ตรงนี้
+                // create a Directions service object to use the route method and get a result for our request
+                // var directionsService = new google.maps.DirectionService();
+                // // create a DirectionRenderer object which we will use to display the route
+                // var directionsDisplay = new google.maps.DirectionRender();
+
+                // //bind the directionsRenderer to the map
+                // directionsDisplay.setMap(map);
+
+                // //function
+                // function calcRoute() {
+                //     //create request
+                //     var request = {
+                //         origin: document.getElementById("from").value,
+                //         destination: document.getElementById("to").value,
+                //         travelMode: google.maps.TravelMode.DRIVING,
+                //         unitSystem: google.maps.UnitSystem.IMPERIAL
+                //     }
+                //     //pass the request to the route method
+                //     directionService.route(request, (result, status) => {
+                //         if (status == google.maps.DirectionsStatus.OK) {
+                //             //get distance and time
+                //             const output = document.querySelector('#output');
+                //             output.innerHTML = "<div class='alert-info'> From: " + document.getElementById("from").value + ".<br />To: " + document.getElementById("to").value + ". <br /> Driving distance <i class='fas fa-road'></i>:" + result.routes[0].legs[0].distance.text + ".<br />Duration <i class='fas fa-hourglass-start'></i> : " + result.routes[0].legs[0].duration.text + ". </div>";
+                            
+                //             //display route
+                //             directionsDisplay.setDirections(result);
+                //         } else {
+                //             // delete route from map
+                //             directionsDisplay.setDirections({ routes: []});
+
+                //             //center map in spain
+                //             map.setCenter(myLat,myLong);
+
+                //             //show error message
+                //             output.innerHTML = "<div class='alert-danger'><i class='fas fa-exclamation-triangle'></i> Could not retrieve driving distance. </div>";
+                //         }
+                //     });
+                // }
+
+                // //create autocomplete objects for all input
+                // var options = {
+                //     types: ['(cities)']
+                // }
+
+                // var input1 = document.getElementById("from");
+                // var autocomplete1 = new google.maps.places.Autocomplete(input1, options)
+
+                // var input2 = document.getElementById("to");
+                // var autocomplete2 = new google.maps.places.Autocomplete(input2, options)
+//ถึงตรงนี้
+
+                var marker = new google.maps.Marker({
+                    map:map, 
+                    position:coords, 
+                    draggable: true,
+                    animation: google.maps.Animation.BOUNCE,
+                    title: "Thailand"
+                });
+                
+                
+                var marker2 = new google.maps.Marker({
+                    map:map,
+                    position: {lat: 13.845840003185483, lng:100.43930616881777},
+                    // 13.845840003185483, 100.43930616881777
+                    icon: '1355223.png',
+                    animation: google.maps.Animation.BOUNCE,
+                });
+
+                // marker2.addListener("click", () => {
+                //     map.setZoom(2);
+                //     map.setCenter(marker.getPosition());
+                // });
+                
+                var marker3 = new google.maps.Marker({
+                    map:map,
+                    position: {lat: 13.746418256411351, lng: 100.53507279171284},
+                    // 13.746418256411351, 100.53507279171284
+                    icon: '1355223.png',
+                    animation: google.maps.Animation.BOUNCE
+                });
+
+                // marker3.addListener("click", () => {
+                //     map.setZoom(10);
+                //     map.setCenter(marker.getPosition());
+                // });
+
+                // var markers = [
+                //     {
+                //         "title": "Thailand",
+                //         "lat": 13.845840003185483,
+                //         "lng": 100.53507279171284,
+                //         "description": "Thailand"
+                //     }
+                // ]
+            }
+
+            function failure(){}
+
+            // function calcRoute(marker, marker2){
+
+            // }
+
+        </script>
+    </head>
+
+    <body>
+        <div id="map"></div>
+        <!-- <div id="output"></div> -->
+    </body>
+</html>
